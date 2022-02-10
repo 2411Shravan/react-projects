@@ -4,12 +4,25 @@ const Todo=({text,todos,todo,settodos})=>{
 
     const deletehandler=()=>{
         console.log(todo);
-        // settodos(todos.filter((el)=> el.id!==todo.id));
+        settodos(todos.filter((el)=> el.id!==todo.id));
     };
+
+    const completehandler=()=>{
+        settodos(todos.map((item)=>{
+            if(item.id===todo.id){
+                return{
+                    ...item,completed:!item.completed
+                };
+            }
+            return item;
+            
+        })
+        );
+    }
     return (
         <div className="todo">
-        <li className="todo-item">{text}</li>
-        <button  className="complete-btn">
+        <li className={`todo-item ${todo.completed ? "completed" : ''}`}>{text}</li>
+        <button onClick={completehandler}  className="complete-btn">
             <i className="fas fa-check"></i>
         </button>
         <button onClick={deletehandler}  className="trash-btn">
