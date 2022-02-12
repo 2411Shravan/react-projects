@@ -7,6 +7,7 @@ import TodoList from './components/TodoList'
 function App() {
   const[inpText,setinpText] = useState("");
   const[todos,settodos] = useState([]);
+  const[status,setstatus]=useState("all");
   console.log(inpText);
   console.log(todos);
   return (
