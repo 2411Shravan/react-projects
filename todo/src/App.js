@@ -12,8 +12,14 @@ function App() {
   // console.log(inpText);
   // console.log(todos);
 
+  useEffect(() =>{
+    getlocalstoredtodos();
+  },[]);
+
+
     useEffect(()=>{
       filterhandler();
+      savelocal();
     },[todos,status]);
   const filterhandler=()=>{
     switch (status) {
@@ -38,7 +44,7 @@ function App() {
       localStorage.setItem("todos", JSON.stringify([]));
     }
     else{
-      let todolocal= JSON.parse(localStorage.getItem("todos", JSON.stringify(todos)));
+      let todolocal= JSON.parse(localStorage.getItem("todos"));
       settodos(todolocal);
     }
   }
