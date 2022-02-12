@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form'
 import TodoList from './components/TodoList'
@@ -8,14 +8,32 @@ function App() {
   const[inpText,setinpText] = useState("");
   const[todos,settodos] = useState([]);
   const[status,setstatus]=useState("all");
-  console.log(inpText);
-  console.log(todos);
+  const[filtertodos,setfiltertodos] = useState([]);
+  // console.log(inpText);
+  // console.log(todos);
+
+    useEffect(()=>{
+      filterhandler();
+    },[todos,status]);
+  const filterhandler=()=>{
+    switch (status) {
+      case "completed":
+        setfiltertodos(todos.filter((todo)=> todo.completed === true));
+        break;
+      case "uncompleted":
+        setfiltertodos(todos.filter((todo)=> todo.completed === false));
+        break;  
+      default:
+        setfiltertodos(todos);
+        break;
+    }
+  }
   return (
     <div className="App">
       <header>
         <h1>First To-Do</h1>
       </header>
-      <Form inpText={inpText} todos={todos} settodos={settodos} setinpText={setinpText}/>
+      <Form filtertodos={filtertodos} inpText={inpText} setstatus={setstatus} todos={todos} settodos={settodos} setinpText={setinpText}/>
       <TodoList settodos={settodos} todos={todos}/>
     </div>
   );

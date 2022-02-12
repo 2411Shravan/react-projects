@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Form=({setinpText,settodos,todos,inpText})=>{
+const Form=({setinpText,setstatus,settodos,todos,inpText})=>{
     const inphandler=(e)=>{
         // console.log(e.target.value);
         setinpText(e.target.value);
@@ -13,6 +13,11 @@ const Form=({setinpText,settodos,todos,inpText})=>{
         ]);
         setinpText('');
     }
+    const statushandler=(e)=>{
+        console.log(e.target.value);
+        setstatus(e.target.value);
+
+    }
 
     return (
         <form>
@@ -21,7 +26,7 @@ const Form=({setinpText,settodos,todos,inpText})=>{
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
-                <select name="todos" className="filter-todo">
+                <select onChange={statushandler} name="todos" className="filter-todo">
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
