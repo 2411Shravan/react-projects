@@ -31,10 +31,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>First To-Do</h1>
+        <h1>Listouts</h1>
       </header>
-      <Form filtertodos={filtertodos} inpText={inpText} setstatus={setstatus} todos={todos} settodos={settodos} setinpText={setinpText}/>
-      <TodoList settodos={settodos} todos={todos}/>
+      <Form inpText={inpText} setstatus={setstatus} todos={todos} settodos={settodos} setinpText={setinpText}/>
+      <TodoList  filtertodos={filtertodos} settodos={settodos} todos={todos}/>
     </div>
   );
 }
