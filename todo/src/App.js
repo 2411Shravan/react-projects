@@ -28,6 +28,23 @@ function App() {
         break;
     }
   }
+  const savelocal=()=>{
+    if(localStorage.getItem("todos")===null){
+      localStorage.setItem("todos", JSON.stringify([]));
+    }
+    else{
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  }
+
+  const getlocalstoredtodos=()=>{
+    if(localStorage.getItem("todos")===null){
+      localStorage.setItem("todos", JSON.stringify([]));
+    }
+    else{
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  }
   return (
     <div className="App">
       <header>
